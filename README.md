@@ -1,4 +1,4 @@
-# Quasar App Extension tailwind-css
+# Quasar App Extension Tailwindcss
 
 Installing Tailwind CSS as a Quasar extension
 
@@ -9,7 +9,7 @@ A Quasar App Extension
 # Install
 
 ```bash
-quasar ext add tailwind-css
+quasar ext add tailwindcss2
 ```
 
 Quasar CLI will retrieve it from the NPM registry and install the extension to your project.
@@ -21,7 +21,7 @@ Quasar CLI will retrieve it from the NPM registry and install the extension to y
 # Uninstall
 
 ```bash
-quasar ext remove tailwind-css
+quasar ext remove tailwindcss2
 ```
 
 # Info
@@ -40,5 +40,5 @@ If you appreciate the work that went into this App Extension, please consider [d
 
 ```bash
 yarn add --dev file:./../quasar-tailwindcss
-quasar ext invoke tailwind-css
+quasar ext invoke tailwindcss2
 ```

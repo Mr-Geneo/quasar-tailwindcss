@@ -1,6 +1,9 @@
 const inquirer = require('inquirer')
 const fs = require('fs').promises
 const path = require('path')
+const tmp = require('tmp')
+
+const { name } = require('../package.json')
 
 module.exports = async function (api) {
   try {
@@ -13,18 +16,17 @@ module.exports = async function (api) {
       },
     ])
     if (answers.delete_files) {
-      api.removePath('src/extensions/tailwindcss')
-      fs.open(path.resolve(__dirname, '../.postcssrc.js'))
-        .then(async () => {
-          await api.removePath('.postcssrc.js')
-          await fs.copyFile(path.resolve(__dirname, '../.postcssrc.js'), api.resolve.app('.postcssrc.js'))
-          await fs.unlink(path.resolve(__dirname, '../.postcssrc.js'))
-        })
-        .catch(() => {
-          api.onExitLog('Error deleting or restoring. You can delete it manually.')
-        })
+      await api.removePath('src/extensions/tailwindcss')
+      let dir = path.resolve(tmp.tmpdir, `${name}`)
+      let isExists = await fs.stat(path.resolve(dir, `.postcssrc.js`))
+      if (isExists) {
+        await api.removePath('.postcssrc.js')
+        await fs.copyFile(path.resolve(dir, `.postcssrc.js`), api.resolve.app('.postcssrc.js'))
+        await fs.rmdir(dir, { recursive: true })
+      }
     }
-  } catch (e) {
+  } catch (error) {
+    console.log('error2 :>> ', error)
     api.onExitLog('Error deleting or restoring. You can delete it manually.')
   }
 }

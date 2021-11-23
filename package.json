@@ -1,7 +1,7 @@
 {
-  "name": "quasar-app-extension-tailwind-css",
-  "version": "1.0.0",
-  "description": "A Quasar App Extension",
+  "name": "quasar-app-extension-tailwindcss2",
+  "version": "1.0.4",
+  "description": "A Quasar App Extension for Tailwind CSS",
   "author": "wanggenyou <wanggenyou@foxmail.com>",
   "license": "MIT",
   "main": "src/index.js",
@@ -25,6 +25,7 @@
     "autoprefixer": "^10.4.0",
     "inquirer": "^8.2.0",
     "postcss": "^8.3.11",
-    "tailwindcss": "^2.2.19"
+    "tailwindcss": "^2.2.19",
+    "tmp": "^0.2.1"
   }
 }
